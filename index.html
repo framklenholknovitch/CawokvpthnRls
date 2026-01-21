@@ -5,97 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tor Connection Status</title>
     <meta name="description" content="Check your Tor connection status anonymously">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Translate -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            // Инициализация переводчика с настройками
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,ru,es,fr,de,zh-CN,ja,ko,ar,pt,it,hi,uk,pl',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false,
-                multilanguagePage: true
-            }, 'google_translate_element');
-            
-            // Автоматический перевод на язык системы
-            setTimeout(translateToSystemLanguage, 1500);
-        }
-        
-        function translateToSystemLanguage() {
-            const userLang = navigator.language || navigator.userLanguage;
-            const langCode = userLang.split('-')[0];
-            const supportedLangs = ['ru', 'es', 'fr', 'de', 'zh', 'ja', 'ko', 'ar', 'pt', 'it', 'hi', 'uk', 'pl'];
-            
-            // Если язык не английский и поддерживается
-            if (supportedLangs.includes(langCode) && langCode !== 'en') {
-                const select = document.querySelector('.goog-te-combo');
-                if (select) {
-                    select.value = langCode;
-                    select.dispatchEvent(new Event('change'));
-                    
-                    // Показываем уведомление о переводе
-                    showTranslationNotice(langCode);
-                }
-            }
-        }
-        
-        function showTranslationNotice(langCode) {
-            const langNames = {
-                'ru': 'Russian',
-                'es': 'Spanish', 
-                'fr': 'French',
-                'de': 'German',
-                'zh': 'Chinese',
-                'ja': 'Japanese',
-                'ko': 'Korean',
-                'ar': 'Arabic',
-                'pt': 'Portuguese',
-                'it': 'Italian',
-                'hi': 'Hindi',
-                'uk': 'Ukrainian',
-                'pl': 'Polish'
-            };
-            
-            const notice = document.createElement('div');
-            notice.id = 'translation-notice';
-            notice.innerHTML = `
-                <div class="notice-content">
-                    <i class="fas fa-language"></i>
-                    <div>
-                        <strong>Page translated to ${langNames[langCode] || langCode}</strong>
-                        <p>Click the translate button <i class="fas fa-arrow-up"></i> to change language</p>
-                    </div>
-                    <button onclick="this.parentElement.parentElement.remove()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            `;
-            
-            document.body.appendChild(notice);
-            
-            // Автоматическое скрытие через 8 секунд
-            setTimeout(() => {
-                if (document.getElementById('translation-notice')) {
-                    document.getElementById('translation-notice').remove();
-                }
-            }, 8000);
-        }
-    </script>
     <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <!-- External Resources -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    
+    <!-- Preload -->
+    <link rel="preconnect" href="https://translate.google.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 </head>
 <body>
     <!-- Google Translate Widget -->
     <div class="translate-container">
         <div id="google_translate_element"></div>
-        <button class="translate-btn" onclick="toggleTranslate()" title="Translate / Переводчик">
+        <button class="translate-btn" title="Translate / Переводчик">
             <i class="fas fa-language"></i>
         </button>
     </div>
 
-    <!-- Контент с data-атрибутами для перевода -->
+    <!-- Main Content -->
     <div class="container">
         <header>
             <h1 data-translate="title"><i class="fas fa-user-secret"></i> Tor Connection Check</h1>
@@ -123,6 +55,7 @@
                 </div>
             </div>
 
+            <!-- Status Card -->
             <div class="status-card">
                 <h2 data-translate="connection_info"><i class="fas fa-satellite-dish"></i> Connection Information</h2>
                 <div class="info-grid">
@@ -172,6 +105,7 @@
                 </div>
             </div>
 
+            <!-- Download Section -->
             <div class="download-section">
                 <h2 data-translate="vpn_title"><i class="fas fa-download"></i> Cawokvpthn Tor VPN</h2>
                 <div class="download-card">
@@ -230,8 +164,8 @@
                                 </a>
                             </div>
                         </div>
-                     </div>
-                 </div>
+                    </div>
+                </div>
                 <div class="instructions">
                     <h3 data-translate="instructions_title"><i class="fas fa-info-circle"></i> Installation Instructions:</h3>
                     <ol>
@@ -243,127 +177,15 @@
                     </ol>
                 </div>
             </div>
-        </main>
 
-
-<div class="troubleshooting-section">
+            <!-- Troubleshooting -->
+            <div class="troubleshooting-section">
                 <h2><i class="fas fa-wrench"></i> Troubleshooting Guide</h2>
-                
-                <div class="troubleshooting-grid">
-                    <!-- Проблема 1: Onion.db -->
-                    <div class="trouble-card">
-                        <div class="trouble-header">
-                            <i class="fas fa-database"></i>
-                            <h3>Country/Onion.db Error</h3>
-                        </div>
-                        <div class="trouble-content">
-                            <p class="trouble-desc">If you see errors related to countries or onion database:</p>
-                            <ol class="trouble-steps">
-                                <li>Download the onion.db file: 
-                                    <a href="https://github.com/framklenholknovitch/CawokvpthnRls/releases/download/rels/onion.db" class="file-link">
-                                        <i class="fas fa-download"></i> onion.db
-                                    </a>
-                                </li>
-                                <li>Place it in: 
-                                    <code>C:\Users\[YourUsername]\AppData\Local\Cawokvpthn\</code>
-                                </li>
-                                <li>Restart Cawokvpthn VPN</li>
-                            </ol>
-                        </div>
-                    </div>
-
-                    <!-- Проблема 2: Медленный интернет -->
-                    <div class="trouble-card">
-                        <div class="trouble-header">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <h3>Slow Internet Connection</h3>
-                        </div>
-                        <div class="trouble-content">
-                            <p class="trouble-desc">If Tor connection is slow:</p>
-                            <ol class="trouble-steps">
-                                <li>Go to <strong>SETTINGS → BRIDGES</strong></li>
-                                <li>In <strong>Bridge type</strong> select: <code>snowflake</code></li>
-                                <li>Check the box as shown in the guide</li>
-                                <li>Reconnect to Tor</li>
-                                <li class="alternative">If still slow, try <code>obfs4</code>:
-                                    <ul>
-                                        <li>Get bridges from <a href="https://t.me/GetBridgesBot" class="bot-link">@GetBridgesBot</a> or Tor website</li>
-                                        <li>Paste bridges below and click <strong>Add</strong></li>
-                                        <li>Reconnect</li>
-                                    </ul>
-                                </li>
-                                <li class="alternative">If still slow, try <code>webtunnel</code>:
-                                    <ul>
-                                        <li>Get webtunnel bridges from <a href="https://t.me/GetBridgesBot" class="bot-link">@GetBridgesBot</a></li>
-                                        <li>Paste and click <strong>Add</strong></li>
-                                        <li>Reconnect</li>
-                                    </ul>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-
-                    <!-- Проблема 3: Браузер-заглушка -->
-                    <div class="trouble-card">
-                        <div class="trouble-header">
-                            <i class="fas fa-browser"></i>
-                            <h3>Browser Landing Page Issue</h3>
-                        </div>
-                        <div class="trouble-content">
-                            <p class="trouble-desc">If browser opens with stub page after connection:</p>
-                            <ol class="trouble-steps">
-                                <li>Go to <strong>Settings → Landing Pages</strong></li>
-                                <li>In <strong>Connected page</strong> enter:
-                                    <code>https://framklenholknovitch.github.io/CawokvpthnRls/</code>
-                                </li>
-                                <li>Or disable analytics by turning off the toggle</li>
-                                <li>Close settings and reconnect to Tor</li>
-                            </ol>
-                        </div>
-                    </div>
-
-                    <!-- Проблема 4: DNS и подключение -->
-                    <div class="trouble-card">
-                        <div class="trouble-header">
-                            <i class="fas fa-globe"></i>
-                            <h3>DNS & Connection Issues</h3>
-                        </div>
-                        <div class="trouble-content">
-                            <p class="trouble-desc">If Tor won't connect or connection is unstable:</p>
-                            <ol class="trouble-steps">
-                                <li><strong>Enable DNS in settings</strong> - Tor often requires DNS to work</li>
-                                <li>Recommended DNS settings:
-                                    <ul>
-                                        <li>Google DNS: <code>8.8.8.8</code> and <code>8.8.4.4</code></li>
-                                        <li>Cloudflare DNS: <code>1.1.1.1</code> and <code>1.0.0.1</code></li>
-                                    </ul>
-                                </li>
-                                <li>Other DNS providers may be unstable</li>
-                                <li>This also improves connection speed</li>
-                            </ol>
-                        </div>
-                    </div>
-
-                    <!-- Проблема 5: Общие советы -->
-                    <div class="trouble-card">
-                        <div class="trouble-header">
-                            <i class="fas fa-lightbulb"></i>
-                            <h3>General Tips</h3>
-                        </div>
-                        <div class="trouble-content">
-                            <ul class="trouble-tips">
-                                <li><i class="fas fa-redo"></i> Always <strong>restart the application</strong> after changing settings</li>
-                                <li><i class="fas fa-network-wired"></i> Check your <strong>firewall/antivirus</strong> settings</li>
-                                <li><i class="fas fa-power-off"></i> Try <strong>disconnecting and reconnecting</strong></li>
-                                <li><i class="fas fa-history"></i> Clear Tor cache if problems persist</li>
-                                <li><i class="fas fa-download"></i> Ensure you have the <strong>latest version</strong></li>
-                            </ul>
-                        </div>
-                    </div>
+                <div class="troubleshooting-grid" id="troubleshooting-grid">
+                    <!-- Content will be loaded via JavaScript -->
                 </div>
             </div>
-
-
+        </main>
 
         <footer>
             <div class="footer-content">
@@ -377,7 +199,7 @@
                 </div>
                 <div class="footer-section">
                     <h4><i class="fas fa-language"></i> <span data-translate="language_title">Language</span></h4>
-                    <p data-translate="language_text">Page automatically translated by Google Translate. Click <button onclick="toggleTranslate()" class="text-btn" data-translate="translate_button">translate button</button> to change language.</p>
+                    <p data-translate="language_text">Page automatically translated by Google Translate. Click <button class="text-btn" data-translate="translate_button">translate button</button> to change language.</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -386,185 +208,11 @@
         </footer>
     </div>
 
-    <script src="script.js"></script>
-    
-    <script>
-    // Функции для Google Translate
-    function toggleTranslate() {
-        const select = document.querySelector('.goog-te-combo');
-        const translateBtn = document.querySelector('.translate-btn');
-        
-        if (select.style.display === 'none' || select.style.display === '') {
-            select.style.display = 'block';
-            select.focus();
-            translateBtn.style.color = '#2ecc71';
-            translateBtn.innerHTML = '<i class="fas fa-times"></i>';
-        } else {
-            select.style.display = 'none';
-            translateBtn.style.color = '#4dccbd';
-            translateBtn.innerHTML = '<i class="fas fa-language"></i>';
-        }
-    }
-    
-    // Скрываем стандартный баннер Google Translate
-    function hideGoogleTranslateElements() {
-        // Скрываем баннер
-        const banner = document.querySelector('.goog-te-banner-frame');
-        if (banner) banner.style.display = 'none';
-        
-        // Скрываем ссылку "skip translation"
-        const skipLink = document.querySelector('.skiptranslate');
-        if (skipLink) skipLink.style.display = 'none';
-        
-        // Скрываем нижнюю панель
-        const footer = document.querySelector('.goog-te-footer');
-        if (footer) footer.style.display = 'none';
-    }
-    
-    // Проверяем и скрываем элементы Google Translate
-    setInterval(hideGoogleTranslateElements, 500);
-    
-    // Добавляем стили для уведомления о переводе
-    const translationStyle = document.createElement('style');
-    translationStyle.textContent = `
-        #translation-notice {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            background: linear-gradient(135deg, #4dccbd 0%, #2a9d8f 100%);
-            color: white;
-            padding: 15px;
-            border-radius: 10px;
-            z-index: 999;
-            max-width: 300px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            animation: slideDown 0.5s ease-out;
-        }
-        
-        @keyframes slideDown {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        .notice-content {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        
-        .notice-content i.fa-language {
-            font-size: 1.3rem;
-            margin-top: 2px;
-        }
-        
-        .notice-content strong {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 0.95rem;
-        }
-        
-        .notice-content p {
-            margin: 0;
-            font-size: 0.85rem;
-            opacity: 0.9;
-        }
-        
-        .notice-content button {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1rem;
-            padding: 0;
-            margin-left: auto;
-        }
-        
-        .notice-content button:hover {
-            color: #f0f0f0;
-        }
-        
-        /* Стили для Google Translate dropdown */
-        .goog-te-menu2 {
-            max-height: 300px !important;
-            overflow-y: auto !important;
-        }
-        
-        .goog-te-menu2::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        .goog-te-menu2::-webkit-scrollbar-track {
-            background: #1a1a2e;
-        }
-        
-        .goog-te-menu2::-webkit-scrollbar-thumb {
-            background: #4dccbd;
-            border-radius: 4px;
-        }
-    `;
-    document.head.appendChild(translationStyle);
-    
-    // Инициализация при загрузке
-    document.addEventListener('DOMContentLoaded', () => {
-        hideGoogleTranslateElements();
-        
-        // Добавляем обработчик изменения языка
-        const select = document.querySelector('.goog-te-combo');
-        if (select) {
-            select.addEventListener('change', function() {
-                // Показываем уведомление о смене языка
-                const langName = this.options[this.selectedIndex].text;
-                showCustomNotification(`Language changed to ${langName}`);
-            });
-        }
-    });
-    
-    function showCustomNotification(message) {
-        const notification = document.createElement('div');
-        notification.className = 'custom-notification';
-        notification.textContent = message;
-        notification.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(25, 25, 35, 0.95);
-            color: #4dccbd;
-            padding: 12px 24px;
-            border-radius: 25px;
-            z-index: 1000;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            border: 1px solid #4dccbd;
-            backdrop-filter: blur(10px);
-            animation: fadeInOut 3s ease-in-out;
-        `;
-        
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.remove();
-            }
-        }, 3000);
-    }
-    
-    // Добавляем анимацию для уведомления
-    const notificationStyle = document.createElement('style');
-    notificationStyle.textContent = `
-        @keyframes fadeInOut {
-            0% { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            15% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            85% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
-        }
-    `;
-    document.head.appendChild(notificationStyle);
-    </script>
+    <!-- JavaScript Files -->
+    <script src="js/translate.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/troubleshooting.js"></script>
+    <script src="js/connection-checker.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
